@@ -1,5 +1,6 @@
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -96,10 +97,16 @@ public class Password {
      *         true if the password is strong, false otherwise
      */
     public static HashMap<String, Boolean> checkPasswordsList(ArrayList<String> passwords) {
+        HashMap<String, Boolean> hash = new HashMap<>();
+        for (String password : passwords) {
+            if (isStrongPassword(password)) {
+                hash.put(password, true);
+            } else {
+                hash.put(password, false);
+            }
+        }
 
-        
-
-        return null;
+        return hash;
     }
 
     /**
@@ -115,10 +122,31 @@ public class Password {
      * @return A randomly generated password that meets the security criteria.
      */
     public static String generatePassword(int nbCar) {
+        SecureRandom random = new SecureRandom();
+        List<Character> password = List.of();
+        List<Character> lowercar = List.of(
+                'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+                'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+                'u', 'v', 'w', 'x', 'y', 'z');
+        List<Character> uppercar = List.of(
+                'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+                'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+                'U', 'V', 'W', 'X', 'Y', 'Z');
+        List<Character> numbers = List.of('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
+        List<Character> speciaux = List.of(
+                '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*',
+                '+', ',', '-', '.', '/', ':', ';', '<', '=', '>',
+                '?', '@', '[', '\\', ']', '^', '_', '{', '|', '}',
+                '~', '`');
+        if (nbCar < 4) {
+            return null;
+        } else {
+            char mylowerchar = lowercar.get(random.nextInt(lowercar.size()));
+            char myupperchar = uppercar.get(random.nextInt(uppercar.size()));
+            char mynumber = numbers.get(random.nextInt(numbers.size()));
+            char myspecial = speciaux.get(random.nextInt(speciaux.size()));
+        }
 
-        // Code here
-
-        return null;
     }
 
     public static void main(String[] args) {
