@@ -40,8 +40,12 @@ public class Password {
      */
     public static String bruteForce6Digit(String targetHash) {
 
-        // Code here
-
+        for (int i = 0; i < 1000000; i++) {
+            String number = String.format("%06d", i);
+            if (hashPassword(number).equals(targetHash)) {
+                return number;
+            }
+        }
         return null;
     }
 
@@ -60,9 +64,26 @@ public class Password {
      * @return true if the password is strong, false otherwise
      */
     public static boolean isStrongPassword(String password) {
-
-        // Code here
-
+        if (password.length() >= 12) {
+            for (int i = 0; i < password.length(); i++) {
+                if (Character.isUpperCase(password.charAt(i))) {
+                    for (int j = 0; j < password.length(); j++) {
+                        if (Character.isLowerCase(password.charAt(j))) {
+                            for (int k = 0; k < password.length(); k++) {
+                                if (Character.isDigit(password.charAt(k))) {
+                                    for (int l = 0; l < password.length(); l++) {
+                                        if (Character.isWhitespace(password.charAt(l))) {
+                                            return false;
+                                        }
+                                    }
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         return false;
     }
 
@@ -76,7 +97,7 @@ public class Password {
      */
     public static HashMap<String, Boolean> checkPasswordsList(ArrayList<String> passwords) {
 
-        // Code here
+        
 
         return null;
     }
