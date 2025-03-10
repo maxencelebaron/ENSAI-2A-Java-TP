@@ -1,4 +1,4 @@
-import src.main.java.fr.Book;
+package fr.ensai.library;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -70,10 +70,5 @@ public class Library {
         IOException e) {
             System.err.println("Error reading the file: " + e.getMessage());
         }
-    }
-
-    // Getter
-    public int getSpeed() {
-        return this.speed;
     }
 }

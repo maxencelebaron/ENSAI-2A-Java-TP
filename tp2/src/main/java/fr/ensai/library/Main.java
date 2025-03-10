@@ -16,3 +16,6 @@ public class Main {
         System.out.println(fellowshipOfTheRing.toString());
     }
 }
+
+maxlib = new Library("MaxLib", []);
+maxlib.loadBooksFromCSV("src/main/resources/books.csv")
