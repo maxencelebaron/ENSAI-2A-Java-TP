@@ -13,6 +13,14 @@ public class Loan {
         this.student = student;
         this.item = item;
         this.startDate = startDate;
-        this.returnDate = returnDate;
+        this.returnDate = null;
+    }
+
+    public void setReturnDate(Date newReturnDate){
+        this.returnDate = newReturnDate;
+    }
+
+    public String toString(){
+        System.out.println(this.item.title + "borrowed by" + this.student.name);
     }
 }

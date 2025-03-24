@@ -13,7 +13,8 @@ public abstract class Item {
         this.pageCount = pageCount;
     }
 
-    // Method
-
-    // Getter
+    public Item getItem() {
+        return this.item;
+    }
+    
 }

@@ -42,4 +42,6 @@ class LibraryTest {
         assertNull(foundLoan);
     }
 
+    @Test
+    void getBooksByAuthor_
 }

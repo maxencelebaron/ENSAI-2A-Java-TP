@@ -12,12 +12,15 @@ public class Library {
     // Attributes
     private String name;
     private List<Item> items;
-    
+    private List<Loan> activeLoans;
+    private List<Loan> completedLoans;
 
     // Constructor
     public Library(String name) {
         this.name = name;
         this.items = new ArrayList<>();
+        this.activeLoans = new ArrayList<>();
+        this.completedLoans = new ArrayList<>();
     }
 
     // Method
@@ -78,5 +81,33 @@ public class Library {
         IOException e) {
             System.err.println("Error reading the file: " + e.getMessage());
         }
+    }
+
+    public Loan findActiveLoanForItem(Item item){
+        if (activeLoans != null){
+            for (Loan loan : this.activeLoans){
+                if (loan.getItem().equals(item)){
+                    return loan;
+                }
+            }
+            return null;
+        }
+    }
+
+    public List<Book> getBooksByAuthor(Author author){
+        ArrayList<Book> result = new ArrayList<>();
+        for (Item item : items) {
+            if (item instanceof Book) { // Check if the item is a Book
+                Book book = (Book) item; // Cast the item to a Book
+                if (book.getAuthor().equals(author)) {
+                    result.add(book);
+                }
+            }
+        }
+        return result;
+    }
+
+    public boolean loanItem(Item item, Student student){
+
     }
 }
